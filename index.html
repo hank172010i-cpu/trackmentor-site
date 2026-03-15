@@ -1,197 +1,290 @@
- <!DOCTYPE html>
-<html lang="en">
-
+<!DOCTYPE html>
+<html lang="zh-Hant">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TrackMentor</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #06142b;
+      color: white;
+      text-align: center;
+    }
 
-<title>TrackMentor</title>
+    .topbar {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 1000;
+      display: flex;
+      gap: 8px;
+    }
 
-<style>
+    .langbtn {
+      padding: 10px 16px;
+      border: none;
+      background: #334155;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+    }
 
-body{
-margin:0;
-font-family:Arial;
-background:#06142b;
-color:white;
-text-align:center;
-}
+    .langbtn:hover {
+      background: #475569;
+    }
 
-.topbar{
-position:fixed;
-right:20px;
-top:20px;
-}
+    header {
+      padding: 100px 20px 70px 20px;
+    }
 
-.langbtn{
-margin-left:5px;
-padding:6px 10px;
-border:none;
-background:#334155;
-color:white;
-border-radius:6px;
-cursor:pointer;
-}
+    .logo {
+      width: 120px;
+      max-width: 40vw;
+      margin-bottom: 20px;
+      border-radius: 16px;
+    }
 
-header{
-padding:120px 20px 80px 20px;
-}
+    h1 {
+      font-size: 64px;
+      margin: 0 0 12px 0;
+    }
 
-.logo{
-width:120px;
-margin-bottom:20px;
-}
+    h2 {
+      margin: 0;
+      color: #cbd5e1;
+      font-weight: normal;
+    }
 
-h1{
-font-size:56px;
-margin-bottom:10px;
-}
+    p {
+      color: #cbd5e1;
+      line-height: 1.7;
+    }
 
-h2{
-color:#cbd5e1;
-font-weight:normal;
-}
+    .hero-desc {
+      margin-top: 24px;
+      font-size: 20px;
+    }
 
-p{
-color:#cbd5e1;
-}
+    .download {
+      background: #facc15;
+      border: none;
+      padding: 18px 36px;
+      font-size: 22px;
+      border-radius: 14px;
+      cursor: pointer;
+      margin-top: 30px;
+      color: #111827;
+      font-weight: bold;
+    }
 
-.download{
-background:#facc15;
-border:none;
-padding:18px 36px;
-font-size:22px;
-border-radius:14px;
-cursor:pointer;
-margin-top:30px;
-}
+    .download:hover {
+      background: #eab308;
+    }
 
-section{
-padding:80px 20px;
-max-width:900px;
-margin:auto;
-}
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
 
-.card{
-background:#0f172a;
-border:1px solid #334155;
-padding:30px;
-border-radius:20px;
-margin-top:30px;
-line-height:30px;
-}
+    .card {
+      background: #0f172a;
+      border: 1px solid #334155;
+      padding: 30px;
+      border-radius: 20px;
+      margin-top: 30px;
+      line-height: 30px;
+    }
 
-footer{
-padding:60px;
-color:#64748b;
-}
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 30px;
+    }
 
-</style>
+    .feature-item {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 18px;
+      padding: 24px 18px;
+      text-align: center;
+    }
 
+    .feature-item h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 22px;
+    }
+
+    .feature-item p {
+      margin: 0;
+      font-size: 15px;
+      color: #cbd5e1;
+    }
+
+    footer {
+      padding: 50px 20px 70px;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 42px;
+      }
+
+      .hero-desc {
+        font-size: 18px;
+      }
+
+      .download {
+        font-size: 18px;
+        padding: 16px 28px;
+      }
+
+      .topbar {
+        top: 12px;
+        right: 12px;
+      }
+
+      .langbtn {
+        font-size: 14px;
+        padding: 8px 12px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="topbar">
+    <button class="langbtn" onclick="setLang('zh')">中文</button>
+    <button class="langbtn" onclick="setLang('en')">EN</button>
+  </div>
 
+  <header>
+    <img src="logo.png" class="logo" alt="TrackMentor Logo" />
 
-<div class="topbar">
-<button class="langbtn" onclick="setLang('zh')">中文</button>
-<button class="langbtn" onclick="setLang('en')">EN</button>
-</div>
+    <h1 id="title">TrackMentor</h1>
+    <h2 id="subtitle">AI 模擬賽車教練</h2>
 
+    <p id="desc" class="hero-desc">
+      上傳你的單圈影片，獲得 AI 教練分析並持續進步。
+    </p>
 
-<header>
+    <a id="download-link" href="https://drive.google.com/file/d/1Ohx6oC2_sIaPb6NcJWWZWxjgUmS6c3kT/view?usp=drive_link" target="_blank">
+      <button class="download" id="download-btn">下載測試版</button>
+    </a>
+  </header>
 
-<img src="logo.png" class="logo">
+  <section>
+    <h2 id="features-title">功能特色</h2>
 
-<h1 id="title">TrackMentor</h1>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <h3 id="f1-title">AI 分析報告</h3>
+        <p id="f1-desc">提供整圈總評、逐彎分析與重點問題整理。</p>
+      </div>
 
-<h2 id="subtitle">AI Racing Coach for Sim Racing</h2>
+      <div class="feature-item">
+        <h3 id="f2-title">AI 教練聊天室</h3>
+        <p id="f2-desc">可追問煞車點、路線、節奏與駕駛策略。</p>
+      </div>
 
-<p id="desc">Upload your lap. Get AI coaching. Improve your racing.</p>
+      <div class="feature-item">
+        <h3 id="f3-title">車輛調校建議</h3>
+        <p id="f3-desc">針對底盤、穩定性與調校方向給出建議。</p>
+      </div>
 
-<a href="https://drive.google.com/file/d/1Ohx6oC2_sIaPb6NcJWWZWxjgUmS6c3kT/view?usp=drive_link" target="_blank">
-<button class="download" id="downloadbtn">Download Beta</button>
-</a>
+      <div class="feature-item">
+        <h3 id="f4-title">歷史紀錄</h3>
+        <p id="f4-desc">保存每次分析的圈速、賽道、車輛與報告摘要。</p>
+      </div>
 
-</header>
+      <div class="feature-item">
+        <h3 id="f5-title">多遊戲支援架構</h3>
+        <p id="f5-desc">目前先以 ACC 為主，未來可擴充到更多模擬器。</p>
+      </div>
 
+      <div class="feature-item">
+        <h3 id="f6-title">雲端同步預留</h3>
+        <p id="f6-desc">已為 Google 登入與雲端資料保存預留架構。</p>
+      </div>
+    </div>
+  </section>
 
-<section>
+  <footer id="footer-text">
+    TrackMentor • Analyze. Coach. Improve.
+  </footer>
 
-<h2 id="featuretitle">Features</h2>
+  <script>
+    function setLang(lang) {
+      const html = document.documentElement;
 
-<div class="card" id="features">
+      if (lang === "zh") {
+        html.lang = "zh-Hant";
+        document.getElementById("title").innerText = "TrackMentor";
+        document.getElementById("subtitle").innerText = "AI 模擬賽車教練";
+        document.getElementById("desc").innerText = "上傳你的單圈影片，獲得 AI 教練分析並持續進步。";
+        document.getElementById("download-btn").innerText = "下載測試版";
+        document.getElementById("features-title").innerText = "功能特色";
 
-AI Analysis Report<br><br>
+        document.getElementById("f1-title").innerText = "AI 分析報告";
+        document.getElementById("f1-desc").innerText = "提供整圈總評、逐彎分析與重點問題整理。";
 
-AI Coach Chat<br><br>
+        document.getElementById("f2-title").innerText = "AI 教練聊天室";
+        document.getElementById("f2-desc").innerText = "可追問煞車點、路線、節奏與駕駛策略。";
 
-Car Setup Suggestions<br><br>
+        document.getElementById("f3-title").innerText = "車輛調校建議";
+        document.getElementById("f3-desc").innerText = "針對底盤、穩定性與調校方向給出建議。";
 
-Performance History<br><br>
+        document.getElementById("f4-title").innerText = "歷史紀錄";
+        document.getElementById("f4-desc").innerText = "保存每次分析的圈速、賽道、車輛與報告摘要。";
 
-Multi Game Support
+        document.getElementById("f5-title").innerText = "多遊戲支援架構";
+        document.getElementById("f5-desc").innerText = "目前先以 ACC 為主，未來可擴充到更多模擬器。";
 
-</div>
+        document.getElementById("f6-title").innerText = "雲端同步預留";
+        document.getElementById("f6-desc").innerText = "已為 Google 登入與雲端資料保存預留架構。";
 
-</section>
+        document.getElementById("footer-text").innerText = "TrackMentor • Analyze. Coach. Improve.";
+      }
 
+      if (lang === "en") {
+        html.lang = "en";
+        document.getElementById("title").innerText = "TrackMentor";
+        document.getElementById("subtitle").innerText = "AI Racing Coach for Sim Racing";
+        document.getElementById("desc").innerText = "Upload your lap, get AI coaching, and keep improving.";
+        document.getElementById("download-btn").innerText = "Download Beta";
+        document.getElementById("features-title").innerText = "Features";
 
-<footer>
+        document.getElementById("f1-title").innerText = "AI Analysis Report";
+        document.getElementById("f1-desc").innerText = "Get full-lap summaries, corner-by-corner feedback, and key issues.";
 
-TrackMentor • Analyze. Coach. Improve.
+        document.getElementById("f2-title").innerText = "AI Coach Chat";
+        document.getElementById("f2-desc").innerText = "Ask follow-up questions about braking, lines, rhythm, and strategy.";
 
-</footer>
+        document.getElementById("f3-title").innerText = "Setup Suggestions";
+        document.getElementById("f3-desc").innerText = "Receive advice for chassis balance, stability, and tuning direction.";
 
+        document.getElementById("f4-title").innerText = "Performance History";
+        document.getElementById("f4-desc").innerText = "Save lap times, tracks, cars, and report summaries from each session.";
 
+        document.getElementById("f5-title").innerText = "Multi-Game Ready";
+        document.getElementById("f5-desc").innerText = "Built with ACC first, with structure ready for more sim racing games.";
 
-<script>
+        document.getElementById("f6-title").innerText = "Cloud Sync Ready";
+        document.getElementById("f6-desc").innerText = "Prepared for Google sign-in and cloud-based data storage.";
 
-function setLang(lang){
-
-if(lang=="zh"){
-
-document.getElementById("subtitle").innerText="模擬賽車 AI 教練";
-
-document.getElementById("desc").innerText="上傳你的單圈影片，AI分析你的駕駛並提供教練建議。";
-
-document.getElementById("downloadbtn").innerText="下載測試版";
-
-document.getElementById("featuretitle").innerText="功能";
-
-document.getElementById("features").innerHTML=
-"AI 分析報告<br><br>"+
-"AI 教練聊天室<br><br>"+
-"車輛調校建議<br><br>"+
-"成績與歷史紀錄<br><br>"+
-"多遊戲支援";
-
-}
-
-if(lang=="en"){
-
-document.getElementById("subtitle").innerText="AI Racing Coach for Sim Racing";
-
-document.getElementById("desc").innerText="Upload your lap. Get AI coaching. Improve your racing.";
-
-document.getElementById("downloadbtn").innerText="Download Beta";
-
-document.getElementById("featuretitle").innerText="Features";
-
-document.getElementById("features").innerHTML=
-"AI Analysis Report<br><br>"+
-"AI Coach Chat<br><br>"+
-"Car Setup Suggestions<br><br>"+
-"Performance History<br><br>"+
-"Multi Game Support";
-
-}
-
-}
-
-</script>
-
-
+        document.getElementById("footer-text").innerText = "TrackMentor • Analyze. Coach. Improve.";
+      }
+    }
+  </script>
 </body>
 </html>
