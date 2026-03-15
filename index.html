@@ -1,6 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>TrackMentor</title>
 
 <style>
@@ -13,24 +18,49 @@ color:white;
 text-align:center;
 }
 
+.topbar{
+position:fixed;
+right:20px;
+top:20px;
+}
+
+.langbtn{
+margin-left:5px;
+padding:6px 10px;
+border:none;
+background:#334155;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
 header{
-padding:80px 20px;
+padding:120px 20px 80px 20px;
+}
+
+.logo{
+width:120px;
+margin-bottom:20px;
 }
 
 h1{
-font-size:60px;
+font-size:56px;
 margin-bottom:10px;
 }
 
 h2{
+color:#cbd5e1;
 font-weight:normal;
+}
+
+p{
 color:#cbd5e1;
 }
 
-button{
+.download{
 background:#facc15;
 border:none;
-padding:18px 40px;
+padding:18px 36px;
 font-size:22px;
 border-radius:14px;
 cursor:pointer;
@@ -49,25 +79,39 @@ border:1px solid #334155;
 padding:30px;
 border-radius:20px;
 margin-top:30px;
+line-height:30px;
+}
+
+footer{
+padding:60px;
+color:#64748b;
 }
 
 </style>
 
 </head>
 
-
 <body>
+
+
+<div class="topbar">
+<button class="langbtn" onclick="setLang('zh')">中文</button>
+<button class="langbtn" onclick="setLang('en')">EN</button>
+</div>
+
 
 <header>
 
-<h1>TrackMentor</h1>
+<img src="logo.png" class="logo">
 
-<h2>AI Racing Coach for Sim Racing</h2>
+<h1 id="title">TrackMentor</h1>
 
-<p>Upload your lap. Get AI coaching. Improve your racing.</p>
+<h2 id="subtitle">AI Racing Coach for Sim Racing</h2>
 
-<a href=https://drive.google.com/file/d/1Ohx6oC2_sIaPb6NcJWWZWxjgUmS6c3kT/view?usp=drive_link target="_blank">
-<button>Download TrackMentor</button>
+<p id="desc">Upload your lap. Get AI coaching. Improve your racing.</p>
+
+<a href="你的GoogleDrive下載連結" target="_blank">
+<button class="download" id="downloadbtn">Download Beta</button>
 </a>
 
 </header>
@@ -75,57 +119,78 @@ margin-top:30px;
 
 <section>
 
-<h2>Features</h2>
+<h2 id="featuretitle">Features</h2>
 
-<div class="card">
+<div class="card" id="features">
+
 AI Analysis Report<br><br>
+
 AI Coach Chat<br><br>
+
 Car Setup Suggestions<br><br>
+
 Performance History<br><br>
+
 Multi Game Support
-</div>
-
-</section>
-
-
-<section>
-
-<h2>How it Works</h2>
-
-<div class="card">
-1 Upload your lap video<br><br>
-2 AI analyzes your driving<br><br>
-3 Get coaching feedback<br><br>
-4 Improve your lap time
-</div>
-
-</section>
-
-
-<section>
-
-<h2>Closed Beta</h2>
-
-<div class="card">
-
-Multi Game Selection<br>
-Car Selection<br>
-AI Analysis Report<br>
-AI Coach Chat<br>
-AI Setup Advice<br>
-History Records<br>
-Google Login Structure<br>
 
 </div>
 
 </section>
 
 
-<footer style="padding:60px;color:#64748b">
+<footer>
 
 TrackMentor • Analyze. Coach. Improve.
 
 </footer>
+
+
+
+<script>
+
+function setLang(lang){
+
+if(lang=="zh"){
+
+document.getElementById("subtitle").innerText="模擬賽車 AI 教練";
+
+document.getElementById("desc").innerText="上傳你的單圈影片，AI分析你的駕駛並提供教練建議。";
+
+document.getElementById("downloadbtn").innerText="下載測試版";
+
+document.getElementById("featuretitle").innerText="功能";
+
+document.getElementById("features").innerHTML=
+"AI 分析報告<br><br>"+
+"AI 教練聊天室<br><br>"+
+"車輛調校建議<br><br>"+
+"成績與歷史紀錄<br><br>"+
+"多遊戲支援";
+
+}
+
+if(lang=="en"){
+
+document.getElementById("subtitle").innerText="AI Racing Coach for Sim Racing";
+
+document.getElementById("desc").innerText="Upload your lap. Get AI coaching. Improve your racing.";
+
+document.getElementById("downloadbtn").innerText="Download Beta";
+
+document.getElementById("featuretitle").innerText="Features";
+
+document.getElementById("features").innerHTML=
+"AI Analysis Report<br><br>"+
+"AI Coach Chat<br><br>"+
+"Car Setup Suggestions<br><br>"+
+"Performance History<br><br>"+
+"Multi Game Support";
+
+}
+
+}
+
+</script>
 
 
 </body>
